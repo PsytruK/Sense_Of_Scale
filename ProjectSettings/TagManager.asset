@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - block
+  - Adjustable
+  - XP
+  - XM
+  - YP
+  - YM
+  - ZP
+  - ZM
+  - rst
   layers:
   - Default
   - TransparentFX
