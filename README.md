@@ -8,3 +8,4 @@ Unity, by default has 1 unit equaling 1m, so providing the floor is calibrated, 
 TODO:
 - Fix Script to attach to floor. Currently trying to compare the Y.scale to the Y.position, where Y.position should be half of Y.scale. However, any time I try and half this, it is setting Y = 0, possible because I am trying to do math on a float, but need to test more.
 - Fix the box collision so I can walk around inside of it and still see the walls. I need collision to be off to enter it, as well as prevent the issue of being unable to access the reset button since it would hit the box collider.
+- See if able to scale down size UI, attach to left hand, either have permanently visible, or visible upon button press (Left grip perhaps?)
