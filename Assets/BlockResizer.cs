@@ -30,9 +30,9 @@ public class BlockResizer : MonoBehaviour
         initLocZ = rCube.transform.position.z;
 
         //Save initial size
-        sizeX = transform.localScale.x;
-        sizeY = transform.localScale.y;
-        sizeZ = transform.localScale.z;
+        sizeX = rCube.transform.localScale.x;
+        sizeY = rCube.transform.localScale.y;
+        sizeZ = rCube.transform.localScale.z;
 
         //Initialize initial size
         X = sizeX;
