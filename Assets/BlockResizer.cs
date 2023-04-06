@@ -43,16 +43,15 @@ public class BlockResizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-         * CODE CURRENTLY DOESN'T WORK
+        
         //Every frame, check to make sure that the Cube is still attached to the floor
         //The cubes position is measured from the center of the object, akin to radius, so if the Y position of the object isn't half of the Y Size, it is clipping
         if(rCube.transform.position.y != (ToSingle(1/2))*(sizeY))
         {
             //Move the position of Y to equal half of the Y scale, but leave the X and Z according to initial sizing.
-            rCube.transform.position = new Vector3(initLocX, (ToSingle(1/2))*(sizeY), initLocZ);
+            rCube.transform.position = new Vector3(initLocX, (0.5f)*(sizeY), initLocZ);
         }
-        */
+        
 
         xDim.text = "X: " + X.ToString();
         yDim.text = "Y: " + Y.ToString();
@@ -147,6 +146,7 @@ public class BlockResizer : MonoBehaviour
         rCube.transform.localScale = new Vector3 (sizeX, sizeY, sizeZ);
     }
 
+    //Test function to turn a double into a float
     public static float ToSingle(double value)
     {
         return (float)value;
