@@ -53,9 +53,9 @@ public class BlockResizer : MonoBehaviour
         }
         
 
-        xDim.text = "X: " + X.ToString();
-        yDim.text = "Y: " + Y.ToString();
-        zDim.text = "Z: " + Z.ToString();
+        xDim.text = "X: " + X.ToString() +"m";
+        yDim.text = "Y: " + Y.ToString() +"m";
+        zDim.text = "Z: " + Z.ToString() +"m";
 
         Line.SetPosition(0, transform.position);
 
@@ -106,7 +106,7 @@ public class BlockResizer : MonoBehaviour
         }
     }
 
-
+    //I want the increment inside of here, so it is performed when the function is called, otherwise doing it within the case statement was causing issues of it adjusting through the floor from update script prior to resizing, only for a frame but appeared jarring.
     public void ChangeScaleXP()
     {
         X++;
@@ -147,6 +147,7 @@ public class BlockResizer : MonoBehaviour
     }
 
     //Test function to turn a double into a float
+    //Should be redundant at this point
     public static float ToSingle(double value)
     {
         return (float)value;
