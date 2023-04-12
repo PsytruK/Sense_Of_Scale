@@ -17,7 +17,7 @@ public class BlockResizer : MonoBehaviour
 
     public LineRenderer Line;
 
-    //floats to store the initial position of the cube
+    //floats to store the initial position, size, and adjsuted size of the cube
     public float X, Y, Z, initLocX, initLocY, initLocZ, sizeX, sizeY, sizeZ;
 
 
@@ -46,17 +46,20 @@ public class BlockResizer : MonoBehaviour
         
         //Every frame, check to make sure that the Cube is still attached to the floor
         //The cubes position is measured from the center of the object, akin to radius, so if the Y position of the object isn't half of the Y Size, it is clipping
-        if(rCube.transform.position.y != (ToSingle(1/2))*(sizeY))
+        //Could have made this its own function, decided to leave here since I do not need to call multiple times.
+        if(rCube.transform.position.y != (ToFloat(1/2))*(sizeY))
         {
             //Move the position of Y to equal half of the Y scale, but leave the X and Z according to initial sizing.
             rCube.transform.position = new Vector3(initLocX, (0.5f)*(sizeY), initLocZ);
         }
         
 
+        //Text for displaying current cube value
         xDim.text = "X: " + X.ToString() +"m";
         yDim.text = "Y: " + Y.ToString() +"m";
         zDim.text = "Z: " + Z.ToString() +"m";
 
+        //Code from Assignment 3 for the Physics raycast
         Line.SetPosition(0, transform.position);
 
         Line.SetPosition(1, transform.position + (transform.forward * 20));
@@ -67,6 +70,7 @@ public class BlockResizer : MonoBehaviour
 
         if (hit.collider)
         {
+            //Using switch statement felt more efficient than an if/else, especially with this many buttons.
             switch (hit.collider.tag)
             {
                 case "XP":
@@ -107,6 +111,7 @@ public class BlockResizer : MonoBehaviour
     }
 
     //I want the increment inside of here, so it is performed when the function is called, otherwise doing it within the case statement was causing issues of it adjusting through the floor from update script prior to resizing, only for a frame but appeared jarring.
+    //Block of code for the button functions
     public void ChangeScaleXP()
     {
         X++;
@@ -138,6 +143,7 @@ public class BlockResizer : MonoBehaviour
         rCube.transform.localScale = new Vector3(X, Y, Z);
     }
 
+    //Sets the value of the scale to be the initial values, which also resets the Y position due to the check within the Update function.
     public void ResetScale()
     {
         X = sizeX;
@@ -147,8 +153,8 @@ public class BlockResizer : MonoBehaviour
     }
 
     //Test function to turn a double into a float
-    //Should be redundant at this point
-    public static float ToSingle(double value)
+    //Should be redundant at this point, but left it in for reminders sake
+    public static float ToFloat(double value)
     {
         return (float)value;
     }
